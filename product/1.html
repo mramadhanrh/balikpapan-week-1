@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Page</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <style>
+
+
+      /* Add your fancy styling here */
+      .product-title {
+        font-weight: bold;
+        font-size: 24px;
+        font-style: italic;
+        color: blue;
+      }
+
+      @media only screen and (max-width: 700px) {
+        .product-title {
+          color: red;
+        }
+      }
+
+    </style>
+  </head>
+  </head>
+  <body>
+    <h1 class="product-title ">Product Title</h1>
+    <p>Product Price: $99.99</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet,
+      nunc id aliquam lacinia, nisl nunc ultricies nunc, id tincidunt nisl nunc
+      id nunc. Sed id nunc id nunc aliquam lacinia. Sed id nunc id nunc aliquam
+      lacinia. Sed id nunc id nunc aliquam lacinia.
+    </p>
+    <button id="buyButton">Buy Now</button>
+    <button id="addToCartButton">Add to Cart</button>
+
+    <script>
+      // JavaScript integration to load mock data from variable
+      var productData = {
+        title: "Product Title",
+        price: 99.99,
+        // Add more product details here
+      };
+
+      // Use the productData variable to populate the page dynamically
+      document
+        .getElementById("buyButton")
+        .addEventListener("click", function () {
+          // Add your logic for the buy button here
+        });
+
+      document
+        .getElementById("addToCartButton")
+        .addEventListener("click", function () {
+          // Add your logic for the add to cart button here
+        });
+    </script>
+  </body>
+</html>
