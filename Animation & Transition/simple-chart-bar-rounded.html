@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      var salesData = [
+        {
+          x: 10,
+          y: 20,
+          r: 15,
+        },
+        {
+          x: 20,
+          y: 30,
+          r: 25,
+        },
+        {
+          x: 30,
+          y: 40,
+          r: 35,
+        },
+        {
+          x: 40,
+          y: 50,
+          r: 45,
+        },
+        {
+          x: 50,
+          y: 60,
+          r: 55,
+        },
+      ];
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bubble",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          datasets: [
+            {
+              label: "Sales",
+              data: salesData,
+              backgroundColor: "#615EFC80",
+              borderColor: "#615EFC",
+              borderRadius: 15,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          animation: {
+            duration: 500, // animate over 500ms
+            easing: "easeInBounce",
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

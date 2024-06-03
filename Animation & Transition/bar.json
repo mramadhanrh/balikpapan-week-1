@@ -1,0 +1,43 @@
+{
+  "type": "bar",
+  "data": {
+    "labels": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "datasets": [
+      {
+        "label": "Sales",
+        "data": [65, 59, 80, 81, 56, 55, 40, 25, 70, 75, 80, 90],
+        "backgroundColor": "#FFBF78",
+        "borderRadius": 10,
+        "borderColor": "#FF7D29",
+        "borderWidth": 4,
+        "cubicInterpolationMode": "monotone"
+      }
+    ]
+  },
+  "options": {
+    "responsive": true,
+    "animation": {
+      "duration": 500,
+      "easing": "easeInBounce"
+    },
+    "plugins": {
+      "tooltip": {
+        "enabled": false,
+        "padding": 80
+      }
+    }
+  }
+}

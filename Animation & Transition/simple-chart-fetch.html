@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      const canvasElement = document.getElementById("myChart").getContext("2d");
+      const loadBarData = async () => {
+        const response = await fetch("./bar.json");
+        const data = await response.json();
+        console.log(data);
+        new Chart(canvasElement, data);
+      };
+
+      loadBarData();
+
+      console.log(canvasElement);
+    </script>
+  </body>
+</html>

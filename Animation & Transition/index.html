@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .moving-element {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      .second-element {
+        top: 170px;
+        background-color: green;
+        transform: translate(-50%, -50%);
+      }
+
+      .static-element {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin-bottom: 10px;
+      }
+
+      .static-absolute-element {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        margin-bottom: 10px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  </head>
+  <body>
+    <input />
+    <div id="box" class="moving-element"></div>
+    <div class="moving-element second-element"></div>
+    <div class="moving-element second-element" style="top: 300px"></div>
+    <div
+      id="box2"
+      class="moving-element second-element"
+      style="top: 450px"
+    ></div>
+
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element">
+      <div
+        id="box2"
+        class="static-absolute-element second-element"
+        style="top: 0"
+      ></div>
+    </div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <div class="static-element"></div>
+    <script>
+      var boxColor = "red";
+
+      function changeColor() {
+        document.getElementById("box").style.backgroundColor = boxColor;
+
+        if (boxColor === "red") {
+          boxColor = "blue";
+        } else {
+          boxColor = "red";
+        }
+      }
+
+      document.getElementById("box").addEventListener("click", changeColor);
+    </script>
+
+    <script>
+      let left = 0;
+      function intervalAnimation() {
+        setInterval(() => {
+          const box = document.getElementById("box");
+          left += 100;
+          box.style.left = `${left}px`;
+        }, 1000);
+      }
+
+      // intervalAnimation();
+    </script>
+
+    <script>
+      function runRAF() {
+        const box = document.getElementById("box");
+        left += 1;
+        box.style.left = `${left}px`;
+
+        console.log("Hello RAF");
+        requestAnimationFrame(runRAF);
+      }
+      // requestAnimationFrame(runRAF);
+    </script>
+
+    <script>
+      let lastRenderTime = 0;
+      const movePerSecond = 100;
+      const boxElement = document.getElementById("box");
+
+      function animate(timestamp) {
+        if (!lastRenderTime) lastRenderTime = timestamp;
+        const deltaTime = timestamp - lastRenderTime;
+
+        // 60 Fps = 16.67ms
+        if (deltaTime > 1000 / 12) {
+          const distanceMoved = (deltaTime / 1000) * movePerSecond;
+
+          const currentLeft = parseFloat(getComputedStyle(boxElement).left);
+          boxElement.style.left = currentLeft + distanceMoved + "px";
+
+          lastRenderTime = timestamp;
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // requestAnimationFrame(animate);
+    </script>
+
+    <script>
+      const draggableElement = document.getElementById("box2");
+      document.addEventListener("mousemove", function (event) {
+        const cursorX = event.clientX;
+        const cursorY = event.clientY;
+
+        draggableElement.style.left = cursorX + "px";
+        draggableElement.style.top = cursorY + "px";
+
+        console.log("Cursor position:", cursorX, cursorY);
+      });
+      const secondBoxElement = document.querySelectorAll(".second-element");
+      console.log({ secondBoxElement });
+      // anime({
+      //   targets: secondBoxElement,
+      //   translateX: 250,
+      //   delay: 500,
+      //   easing: "easeOutQuart",
+      // });
+    </script>
+  </body>
+</html>

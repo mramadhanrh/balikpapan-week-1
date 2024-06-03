@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="salesChart" width="400" height="400"></canvas>
+
+    <!-- <script>
+      var salesData = [65, 59, 80, 81, 56, 55, 40, 35, 70, 75, 80, 90];
+      var ctx = document.getElementById("salesChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          datasets: [
+            {
+              label: "Sales",
+              data: salesData,
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          animation: {
+            duration: 500, // animate over 500ms
+            easing: "easeInBounce",
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+      });
+    </script> -->
+
+    <!-- <script>
+      var salesData = [65, 59, 80, 81, 56, 55, 40, 35, 70, 75, 80, 90];
+      var ctx = document.getElementById("salesChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          datasets: [
+            {
+              label: "Sales",
+              data: salesData,
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          animation: {
+            duration: 500, // animate over 500ms
+            easing: "easeInBounce",
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+      });
+    </script> -->
+
+    <script>
+      fetch("./line.json")
+        .then((value) => value.json())
+        .then((res) => {
+          console.log({ res });
+        });
+
+      var salesData = [
+        { x: 1, y: 65, r: 10 },
+        { x: 2, y: 59, r: 10 },
+        { x: 3, y: 80, r: 10 },
+        { x: 4, y: 81, r: 10 },
+        { x: 5, y: 56, r: 10 },
+        { x: 6, y: 55, r: 10 },
+        { x: 7, y: 40, r: 10 },
+        { x: 8, y: 35, r: 10 },
+        { x: 9, y: 70, r: 10 },
+        { x: 10, y: 75, r: 210 },
+        { x: 11, y: 80, r: 10 },
+        { x: 12, y: 90, r: 10 },
+      ];
+      var ctx = document.getElementById("salesChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "Sales",
+              data: salesData,
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          animation: {
+            duration: 500, // animate over 500ms
+            easing: "easeInBounce",
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+          },
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

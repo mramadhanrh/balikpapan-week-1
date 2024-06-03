@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      var sales = [
+        {
+          month: "January",
+          sales: [10, 20, 10, 40, 50],
+          expenses: [20, 10, 20, 40, 10],
+        },
+        {
+          month: "Febuary",
+          sales: [10, 10, 10, 40, 50],
+          expenses: [20, 10, 20, 40, 10],
+        },
+        {
+          month: "March",
+          sales: [10, 20, 10, 240, 50],
+          expenses: [20, 10, 20, 40, 10],
+        },
+        {
+          month: "April",
+          sales: [10, 20, 310, 40, 50],
+          expenses: [20, 10, 20, 40, 10],
+        },
+        {
+          month: "May",
+          sales: [10, 0, 10, 40, 50],
+          expenses: [20, 10, 20, 40, 10],
+        },
+      ];
+
+      const getSumOfSales = (item) => {
+        return item.sales.reduce((prev, curr) => prev + curr, 0);
+      };
+
+      const totalSales = sales.map((item) => getSumOfSales(item));
+
+      const canvasElement = document.getElementById("myChart").getContext("2d");
+      new Chart(canvasElement, {
+        type: "bar",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          datasets: [
+            {
+              label: "Sales",
+              data: totalSales,
+              backgroundColor: "#FFBF78",
+              borderRadius: 10,
+              borderColor: "#FF7D29",
+              borderWidth: 4,
+              cubicInterpolationMode: "monotone",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          animation: {
+            duration: 500, // animate over 500ms
+            easing: "easeOut",
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
